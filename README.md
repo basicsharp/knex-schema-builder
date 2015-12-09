@@ -28,8 +28,8 @@ var knex = require('knex'),
 // In order to initialize a fresh db
 schemaInstaller.install(db, schemaPath, function (err) { ... });
 
-// In order to upgrade a db... We can call "upgrade" directly, 
-//   or we can tell the user that an upgrade is needed and that 
+// In order to upgrade a db... We can call "upgrade" directly,
+//   or we can tell the user that an upgrade is needed and that
 //   he should authorize the upgrade process.
 schemaInstaller.isUpgradeNeeded(db, schemaPath, function (err, required) {
 
@@ -45,7 +45,7 @@ schemaInstaller.isUpgradeNeeded(db, schemaPath, function (err, required) {
 
         if (err) {
           // An error occurred...
-          // Please take care of the problem manually, 
+          // Please take care of the problem manually,
           // and then try to run the upgrade routine again.
         } else {
           // Your database has been upgraded successfully!
@@ -146,7 +146,8 @@ Each action can optionally have a `"ignore_errors": true` specified to ignore er
             "engine": "<MYSQL_ENGINE_TYPE>",
             "charset": "<CHARSET>",
             "collate": "<COLLATION>",
-            "timestamps": true/false // Adds a *created_at* and *updated_at* column on the database, setting these each to `dateTime` types.
+            "timestamps": true/false, // Adds a *created_at* and *updated_at* column on the database, setting these each to `dateTime` types.
+            "soft_delete": true/false // Adds a *deleted_at* column on the database with `dateTime` type.
           }
         },
 

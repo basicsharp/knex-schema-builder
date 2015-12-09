@@ -166,6 +166,10 @@ var createTable = function (db, tableName, tableData, callback) {
             table.timestamps();
         }
 
+        if (tableData['soft_delete']) {
+            table.dateTime('deleted_at');
+        }
+
     });
 
     ['engine', 'charset', 'collate'].forEach(function(func){
@@ -408,7 +412,7 @@ var upgrade = function (db, schemaPath, callback) {
                 if (schema['schema'] && !Array.isArray(schema['schema']['columns'])) {
                     schema = schema['schema'];
                 }
-                
+
                 getCurrentDbVersion(db, function(err, currentVersion) {
                     callback(err, schema, parseInt(currentVersion, 10));
                 });
